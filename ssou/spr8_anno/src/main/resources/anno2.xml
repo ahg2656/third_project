@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- @Autowired 를 사용하지 않은 경우 -->
+	<!-- 
+	<bean id="senderProcess" class="anno2_auto.SenderProcess" >
+		<property name="sender">
+			<bean class="anno2_auto.Sender" />
+		</property>
+	</bean> 
+	-->
+
+	<!-- @Autowired 를 사용하는 경우 -->	
+	<!-- 
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" /> 
+	-->
+	
+	<!-- 객체가 생성해주면 매핑은 자동으로 해줌 -->
+	<!-- 타입에 의한 매핑이기 때문에 id 설정(id="sender") 은 의미가 없음 -->
+	<!-- 따라서 같은 타입의 객체가 두 개 이상인 경우 에러 발생 주의!!-->
+	<!-- 그렇기 때문에 @Qualifier(id) 와 함께 사용 -->
+	<!-- 
+	<context:annotation-config /> 
+	-->
+	<!-- 
+	<bean id="senderProcess" class="anno2_auto.SenderProcess" />
+	<bean id="sender" class="anno2_auto.Sender" />
+	<bean id="sender2" class="anno2_auto.Sender2" /> 
+	-->
+	
+	<!-- 클래스 자체로 객체 생성 Annotation 사용 시 -->
+	<context:component-scan base-package="anno2_auto" />
+</beans>

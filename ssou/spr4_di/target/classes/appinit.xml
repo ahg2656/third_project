@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<!-- 
+	<bean id="myprocess"  class="pack.controller.MyProcess">
+		<constructor-arg>
+			<ref bean="mbc" />		
+		</constructor-arg>
+	</bean>
+	<bean id="moneycalc" name="kbs,mbc,sbs" class="pack.model.MoneyCalc" /> 
+	-->
+	<!-- c : Namespaces 이용한 생성자 인자 호출 -->
+	<bean id="myprocess" class="pack.controller.MyProcess" c:inter-ref="moneycalc"/>
+	<bean id="moneycalc" name="kbs,mbc,sbs" class="pack.model.MoneyCalc" />
+</beans>
