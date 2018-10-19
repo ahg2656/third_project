@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<!-- Target Class -->
+	<bean id="messageImpl" class="pack.MessageImpl">
+		<property name="name" value="한국인" />
+	</bean>
+	
+	<!-- AOP 처리 : Target Class 에 Weaving -->
+	<bean id="testAdvice" class="advice.TestAdvice" />
+	
+	<!-- Proxy 를 통한 간접접근 -->
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target">
+			<ref bean="messageImpl"/>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>hello</value>		<!-- Advisor 기술 -->
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Advisor (advice + pointcut) -->
+	<bean id="hello" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice">
+			<ref bean="testAdvice" />
+		</property>
+		<property name="pointcut">
+			<bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+				<property name="pattern">
+					<value>.*sayHi*.</value> <!-- . : 패키지 상관없이 / * : 정규표현식 -->
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>
