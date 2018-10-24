@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- HandlerMapping 설정
+	 : 클라이언트의 요청 URL 과 동일한 이름을 갖는 Bean 을 컨트롤러로 사용하도록 매핑-->
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+	
+	<!-- Controller 설정 -->
+	<bean name="/index.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="list1" />
+	</bean>
+	<bean name="/good/sijak.do" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="list2" />
+	</bean>
+	
+	<!-- ViewReslover -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/view/" /> <!-- '/' : root(WebContent) -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
