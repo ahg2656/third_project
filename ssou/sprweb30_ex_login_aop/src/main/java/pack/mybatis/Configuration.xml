@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="pack.model.JikwonDto" alias="jdto"/> <!-- 별명을 지정 -->
+		<typeAlias type="pack.model.GogekDto" alias="gdto"/> <!-- 별명을 지정 -->
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="pack/mybatis/DataMapper.xml" />
+	</mappers>
+</configuration>
