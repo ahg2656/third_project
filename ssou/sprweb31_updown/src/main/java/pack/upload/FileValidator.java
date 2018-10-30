@@ -14,7 +14,8 @@ public class FileValidator implements Validator{
 		UploadFile file = (UploadFile) uploadFile;
 		
 		if(file.getFile().getSize() == 0) {
-			errors.rejectValue("file", "", "업로드할 파일을 선택하시오.");
+			errors.rejectValue("file", "", "업로드할 파일을 선택하시오.");	
+			//uploadform 의 <sform:errors path="file" cssStyle="color: red;" /> 에 출력
 		} else {
 			
 		}
