@@ -60,10 +60,18 @@ function chatList(type){
 }
 
 function addChat(chatName, chatContent, chatTime){
-	$("#chatList").append("<div class='row'>" +
+	$("#chatlist").append("<div class='row'>" +
 							"<div class='col-lg-12'>" + 
 							"<div class='media'>" +
-							"<a class='pull-left' href='#'>")
+							"<a class='pull-left' href='#'>" +
+							"<img class='media-object img-circle' src='images/icon.png'>" + 
+							"</a>" + 
+							"<div class='media-body'>" +
+							"<h4 class='media-heading'>" + chatName +
+							"<span class='small pull-right'>" + chatTime + 
+							"</span>" + 
+							"</h4>" + 
+							"<p>" + chatContent + "</p></div></div></div></div><hr>")
 }
 </script>
 </head>
@@ -84,24 +92,7 @@ function addChat(chatName, chatContent, chatTime){
 						<div id="chatlist" class="portlet-body chat-widget"
 							style="overflow-y: auto; width: auto; height: 300px;">
 							
-							
-							
-							<hr>
-							<div class="row">
-								<div class="col-lg-12">
-									<div class="media">
-										<a class="pull-left" href="#"> <img
-											class="media-object img-circle" src="images/icon.png">
-										</a>
-										<div class="media-body">
-											<h4 class="media-heading">
-												김삿갓 <span class="small pull-right">오후 06:42</span>
-											</h4>
-										</div>
-										<p>하이요~!</p>
-									</div>
-								</div>
-							</div>
+					
 						</div>
 						<div class="portlet-footer">
 							<div class="row">
@@ -134,5 +125,6 @@ function addChat(chatName, chatContent, chatTime){
 			<strong>데이터베이스 오류가 발생했습니다.</strong>
 		</div>
 	</div>
+	<button type="button" class="btn btn-default pull-right" onclick="chatList('today')">추가</button>
 </body>
 </html>

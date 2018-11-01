@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/ChatSubminServlet")
+@WebServlet("/ChatListServlet")
 public class ChatListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -35,9 +35,9 @@ public class ChatListServlet extends HttpServlet {
 		
 		ArrayList<ChatDto> chatList = chatDao.getChatList(new SimpleDateFormat("yyyy-mm-dd").format(new Date()));
 		for(int i = 0; i < chatList.size(); i++) {
-			result.append("[\"value\": \"" + chatList.get(i).getChatName() + "\"},");
-			result.append("[\"value\": \"" + chatList.get(i).getChatContent() + "\"},");
-			result.append("[\"value\": \"" + chatList.get(i).getChatTime() + "\"}]");
+			result.append("[{\"value\": \"" + chatList.get(i).getChatName() + "\"},");
+			result.append("{\"value\": \"" + chatList.get(i).getChatContent() + "\"},");
+			result.append("{\"value\": \"" + chatList.get(i).getChatTime() + "\"}]");
 			
 			if(i != chatList.size() - 1) {
 				result.append(",");
