@@ -11,6 +11,25 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/bootstrap.js"></script>
 <script type="text/javascript">
+var lastId = 0;
+
+// 내용 입력 시 enter 전송, shift + enter 줄바꿈
+$(document).ready(function(){
+	$("#chatContent").keypress(function(e){
+		if(e.keyCode == 13 && e.shiftKey) {
+			if (evt.type == "keypress") {
+				pasteIntoInput(this, "\n");
+			}
+			e.preventDefault();
+			return;
+		}
+		if(e.keyCode == 13){
+			e.preventDefault();
+			submit();
+		}
+	});
+});
+
 function submit(){
 	var chatName = $("#chatName").val();
 	var chatContent = $("#chatContent").val();
@@ -19,8 +38,8 @@ function submit(){
 		type: "post",
 		url: "./chatSubmitServlet",
 		data : {
-			chatName: chatName,
-			chatContent: chatContent
+			chatName: encodeURIComponent(chatName),
+			chatContent: encodeURIComponent(chatContent)	//특수문자 처리를 위한 메소드
 		},
 		success: function(result){
 			if(result == 1){
@@ -50,11 +69,14 @@ function chatList(type){
 			listType: type
 		},
 		success: function(data){
+			if(data == "") return;
+			
 			var parsed = JSON.parse(data);
 			var result = parsed.result;
 			for(var i = 0; i < result.length; i++){
 				addChat(result[i][0].value, result[i][1].value, result[i][2].value);
 			}
+			lastId = Number(parsed.last);
 		}
 	});
 }
@@ -67,11 +89,18 @@ function addChat(chatName, chatContent, chatTime){
 							"<img class='media-object img-circle' src='images/icon.png'>" + 
 							"</a>" + 
 							"<div class='media-body'>" +
-							"<h4 class='media-heading'>" + chatName +
+							"<h4 class='media-heading'>&nbsp;" + chatName +
 							"<span class='small pull-right'>" + chatTime + 
 							"</span>" + 
 							"</h4>" + 
-							"<p>" + chatContent + "</p></div></div></div></div><hr>")
+							"<p>" + chatContent + "</p></div></div></div></div><hr>");
+	$("#chatlist").scrollTop($("#chatlist")[0].scrollHeight);
+}
+
+function getInfiniteChat(){
+	setInterval(function(){
+		chatList(lastId);
+	}, 1000);
 }
 </script>
 </head>
@@ -90,7 +119,7 @@ function addChat(chatName, chatContent, chatTime){
 					</div>
 					<div id="chat" class="panel-collapse collapse in">
 						<div id="chatlist" class="portlet-body chat-widget"
-							style="overflow-y: auto; width: auto; height: 300px;">
+							style="overflow-y: auto; width: auto; height: 600px;">
 							
 					
 						</div>
@@ -98,7 +127,7 @@ function addChat(chatName, chatContent, chatTime){
 							<div class="row">
 								<div class="form-group col-xs-4">
 									<input type="text" id="chatName" class="form-control"
-										placeholder="이름" maxlength="20" style="height: 40px;">
+										placeholder="이름" maxlength="8" style="height: 40px;">
 								</div>
 							</div>
 							<div class="row" style="height: 90px;">
@@ -125,6 +154,12 @@ function addChat(chatName, chatContent, chatTime){
 			<strong>데이터베이스 오류가 발생했습니다.</strong>
 		</div>
 	</div>
-	<button type="button" class="btn btn-default pull-right" onclick="chatList('today')">추가</button>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			chatList("ten");
+			getInfiniteChat();
+		});
+	</script>
 </body>
 </html>

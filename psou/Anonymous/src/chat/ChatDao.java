@@ -33,9 +33,96 @@ public class ChatDao {
 			
 			while(rs.next()) {
 				ChatDto dto = new ChatDto();
-				dto.setChatName("chatName");
-				dto.setChatContent("chatContent");
-				dto.setChatTime("chatTime");
+				dto.setChatId(rs.getInt("chatId"));
+				dto.setChatName(rs.getString("chatName"));
+				dto.setChatContent(rs.getString("chatContent").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>"));
+				int chatTime = Integer.parseInt(rs.getString("chatTime").substring(11, 13));
+				String timeType = "오전";
+				if(Integer.parseInt(rs.getString("chatTime").substring(11, 13)) >= 12) {
+					timeType = "오후";
+					chatTime -= 12;
+				}
+				dto.setChatTime(rs.getString("chatTime").substring(0, 11) + " " + timeType + " " + chatTime + ":" + rs.getString("chatTime").substring(14, 16) + "");
+				
+				chatList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}		
+		}
+		return chatList;
+	}
+	
+	public ArrayList<ChatDto> getChatListByRecent(int number){
+		ArrayList<ChatDto> chatList = new ArrayList<>();
+		pstmt = null;
+		rs = null;
+		String sql = "select * from chat where chatId > (select max(chatId) - ? from chat) order by chatTime";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, number);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ChatDto dto = new ChatDto();
+				dto.setChatId(rs.getInt("chatId"));
+				dto.setChatName(rs.getString("chatName"));
+				dto.setChatContent(rs.getString("chatContent").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>"));
+				int chatTime = Integer.parseInt(rs.getString("chatTime").substring(11, 13));
+				String timeType = "오전";
+				if(Integer.parseInt(rs.getString("chatTime").substring(11, 13)) >= 12) {
+					timeType = "오후";
+					chatTime -= 12;
+				}
+				dto.setChatTime(rs.getString("chatTime").substring(0, 11) + " " + timeType + " " + chatTime + ":" + rs.getString("chatTime").substring(14, 16) + "");
+				
+				chatList.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}		
+		}
+		return chatList;
+	}
+	
+	public ArrayList<ChatDto> getChatListByRecent(String chatId){
+		ArrayList<ChatDto> chatList = new ArrayList<>();
+		pstmt = null;
+		rs = null;
+		String sql = "select * from chat where chatId > ? order by chatTime";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, chatId);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ChatDto dto = new ChatDto();
+				dto.setChatId(rs.getInt("chatId"));
+				dto.setChatName(rs.getString("chatName"));
+				dto.setChatContent(rs.getString("chatContent").replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>"));
+				int chatTime = Integer.parseInt(rs.getString("chatTime").substring(11, 13));
+				String timeType = "오전";
+				if(Integer.parseInt(rs.getString("chatTime").substring(11, 13)) >= 12) {
+					timeType = "오후";
+					chatTime -= 12;
+				}
+				dto.setChatTime(rs.getString("chatTime").substring(0, 11) + " " + timeType + " " + chatTime + ":" + rs.getString("chatTime").substring(14, 16) + "");
 				
 				chatList.add(dto);
 			}
@@ -56,7 +143,7 @@ public class ChatDao {
 	public int submit(String chatName, String chatContent) {
 		pstmt = null;
 		rs = null;
-		String sql = "insert into chat values(?,?,now())";
+		String sql = "insert into chat values(NULL,?,?,now())";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
