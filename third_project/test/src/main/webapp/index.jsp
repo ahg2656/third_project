@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>메롱</title>
+		<title>안녕</title>
 	</head> 
 	<body>
 		<c:url value="/showMessage.html" var="messageUrl" />
