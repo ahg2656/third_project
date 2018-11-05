@@ -1,0 +1,11 @@
+package model.com.third_pro;
+
+import java.util.List;
+
+public class Pby_AnnoImpl implements Pby_AnnoInter{
+
+	public List<Pby_Material_list_DTO> selectAllData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

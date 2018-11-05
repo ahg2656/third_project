@@ -1,0 +1,11 @@
+package controller.com.third_pro;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@org.springframework.stereotype.Controller
+public class Pby_Controller {
+	@RequestMapping("main")
+	public void returnMain() {
+		System.out.println("aa");
+	}
+}

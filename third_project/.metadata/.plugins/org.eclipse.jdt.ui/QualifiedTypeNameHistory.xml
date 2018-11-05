@@ -5,4 +5,6 @@
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="model.com.therd_pro.Material_list_DTO"/>
+<fullyQualifiedTypeName name="model.com.third_pro.Pby_AnnoInter"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 </qualifiedTypeNameHistroy>

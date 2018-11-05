@@ -1,0 +1,11 @@
+package model.com.third_pro;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
+public interface Pby_AnnoInter {
+
+	@Select("select * from material_list")
+	public List<Pby_Material_list_DTO> selectAllData();	
+}

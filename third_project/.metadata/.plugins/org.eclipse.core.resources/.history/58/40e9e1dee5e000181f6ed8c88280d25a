@@ -1,0 +1,16 @@
+package controller.com.third_pro;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import model.com.third_pro.Pby_AnnoInter;
+
+@org.springframework.stereotype.Controller
+public class Pby_Controller {
+	
+	private Pby_AnnoInter annointer;
+	
+	@RequestMapping("main")
+	public void returnMain() {
+		System.out.println("aa");
+	}
+}

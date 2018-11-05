@@ -10,7 +10,7 @@
             base-package="org.springframework.samples.service"/>  -->
             <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
             <property name="locations">
-            <value>classpath:pack/mybatis/db.properties</value>
+            <value>classpath:mariadb/com/third_pro/db.properties</value>
             </property>
             </bean>
             <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource"> 
@@ -23,7 +23,7 @@
             <property name="dataSource" ref="dataSource"/>
             </bean>
             <bean class="org.mybatis.spring.mapper.MapperFactoryBean">
-            <property name="mapperInterface" value="pack.model.SangpumAnnoInter"/>
+            <property name="mapperInterface" value="model.com.third_pro.Pby_AnnoInter"/>
             <property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
             </bean>
 

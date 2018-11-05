@@ -6,3 +6,9 @@
 1541407620660	Move file
 1541408645018	Delete element
 1541408783104	Move file
+1541412954671	Rename type 'Controller'
+1541412965873	Rename type 'AnnoInter'
+1541412972692	Rename type 'Material_list_DTO'
+1541413102227	Rename package 'controller.com.therd_pro'
+1541413106535	Rename package 'mariadb.com.therd_pro'
+1541413110435	Rename package 'model.com.therd_pro'
