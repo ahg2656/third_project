@@ -1,0 +1,5 @@
+package model.com.therd_pro;
+
+public class Material_list_DTO {
+
+}

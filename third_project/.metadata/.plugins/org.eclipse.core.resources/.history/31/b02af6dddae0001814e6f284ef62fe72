@@ -1,0 +1,6 @@
+package model.com.therd_pro;
+
+public interface AnnoInter {
+
+	
+}

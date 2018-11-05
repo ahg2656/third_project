@@ -1,0 +1,29 @@
+
+11월 05, 2018 16:35:44.44 NEW SESSION
+11월 05, 2018 16:35:44.44 [5292:5628:1105/163544.447:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:37:47.62 [5292:5628:1105/163747.624:ERROR:input_method_base.cc(146)] NOT IMPLEMENTEDUsing InputMethodKeyboardControllerStub
+
+11월 05, 2018 16:39:20.50 NEW SESSION
+11월 05, 2018 16:39:20.50 [3664:5552:1105/163920.506:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:39:29.30 [3664:5552:1105/163929.307:ERROR:input_method_base.cc(146)] NOT IMPLEMENTEDUsing InputMethodKeyboardControllerStub
+11월 05, 2018 16:40:38.32 [5900:4280:1105/164038.322:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:42:49.36 [5284:2784:1105/164249.364:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:44:00.57 [4616:3900:1105/164400.572:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:46:34.75 [4532:5656:1105/164634.751:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:47:47.59 [4152:3976:1105/164747.596:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:47:56.33 [4152:3976:1105/164756.339:ERROR:input_method_base.cc(146)] NOT IMPLEMENTEDUsing InputMethodKeyboardControllerStub
+11월 05, 2018 16:48:02.40 [3716:3752:1105/164802.404:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:48:28.88 [5264:5832:1105/164828.885:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:49:43.81 [5516:5356:1105/164943.805:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:50:26.68 [1012:6032:1105/165026.686:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:50:36.55 [1156:4792:1105/165036.542:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:51:01.41 [5736:5732:1105/165101.410:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:53:15.57 [5500:2176:1105/165315.572:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:53:27.66 [4292:4152:1105/165327.665:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+
+11월 05, 2018 16:58:34.82 NEW SESSION
+11월 05, 2018 16:58:34.83 [1788:4876:1105/165834.814:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:58:43.93 [1156:1544:1105/165843.930:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 16:59:26.21 [4224:2968:1105/165926.216:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 17:00:02.94 [1364:1416:1105/170002.940:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
+11월 05, 2018 17:00:43.73 [2016:1140:1105/170043.737:ERROR:gpu_process_transport_factory.cc(980)] Lost UI shared context.
